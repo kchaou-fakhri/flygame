@@ -1,8 +1,8 @@
 import Matter from "matter-js";
 import React from "react";
-import { View } from "react-native";
+import { View, Image } from "react-native";
 
-const Bird = (props) => {
+const Ball = (props) => {
   const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
   const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
 
@@ -14,33 +14,44 @@ const Bird = (props) => {
   return (
     <View
       style={{
-        borderWidth: 1,
-        borderColor: color,
-        borderStyle: "solid",
-        position: "absolute",
+        // borderWidth: 1,
+        // borderColor: color,
+        // borderStyle: "solid",
+        // position: "absolute",
         left: xBody,
         top: yBody,
         width: widthBody,
         height: heightBody,
+        // borderRadius: 20,
       }}
-    />
+    >
+      <Image
+        style={{
+          width: 32,
+          height: 32,
+          bottom: -10,
+          transform: [{ rotateY: "180deg" }],
+        }}
+        source={require("../assets/ball.png")}
+      />
+    </View>
   );
 };
 
 export default (world, color, pos, size) => {
-  const initialBird = Matter.Bodies.rectangle(
+  const initialBall = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
     size.width,
     size.height,
-    { label: "Bird" }
+    { label: "Ball" }
   );
-  Matter.World.add(world, initialBird);
+  Matter.World.add(world, initialBall);
 
   return {
-    body: initialBird,
+    body: initialBall,
     color,
     pos,
-    renderer: <Bird />,
+    renderer: <Ball />,
   };
 };

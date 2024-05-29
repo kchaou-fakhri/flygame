@@ -5,6 +5,7 @@ import { SafeAreaView, StatusBar } from "react-native";
 export default function EntryPoint() {
   return (
     <SafeAreaView style={GlobalStyles.container}>
+      <StatusBar hidden={true} />
       <App />
     </SafeAreaView>
   );
