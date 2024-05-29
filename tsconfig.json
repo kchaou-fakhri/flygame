@@ -14,6 +14,6 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "src/components/brid.js"
+    "src/components/ball.js"
   ]
 }
